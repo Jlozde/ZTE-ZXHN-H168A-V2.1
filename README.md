@@ -60,5 +60,6 @@ Bu isteğe modemden gelen cevap, cihazda kullanılan tüm geçerli parametreleri
           * Kullanıcı Adı: `root`
           * Şifre: `Sifre123`
   * Loglardan -> **szCfgSignVal=** ZXHN H168A V2.1
+  * Firmwaredan -> **Hardcode=** H168AV2.1_TTN
 
 **GL:HF**
