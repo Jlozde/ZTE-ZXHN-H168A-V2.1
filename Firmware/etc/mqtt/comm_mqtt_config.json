@@ -1,0 +1,64 @@
+{
+    "Device": {
+        "Auth": {
+            "workmode": 1
+        },
+       "HidePCwithBridge": {
+            "workmode": 1
+        },
+        "AccessNotify": {
+            "workmode": 0
+        },
+        "Security": {
+          "workmode": 0,
+          "AntiCrack": {
+             "workmode": 0
+          },          
+          "AntiWIFICracker": {
+             "workmode": 0
+          },
+          "AntiRouterCracker": {
+             "workmode": 0
+          }
+        },
+        "Management": {
+          "SmartReboot": {
+             "workmode": 0
+          }
+        },
+        "BulkData": {
+          "workmode": 0,
+          "Profile": {
+             "workmode": 0
+          }
+        },
+        "Diagnosis": {
+          "workmode": 0,
+          "CollectReportInTime": {
+             "workmode": 0
+          }
+        },
+        "WiFi": {
+          "SmartReboot": {
+             "workmode": 0
+          },
+          "Power": {
+             "workmode": 0
+          }
+        },
+        "Wlan": {
+          "GuestWiFi": {
+             "workmode": 0
+          }
+        },
+        "WifiNetWorkCfg": {
+          "workmode": 1
+        },
+        "DHCPs": {
+            "workmode": 1
+        },
+        "Ping": {
+            "workmode": 1
+        }
+    }
+}

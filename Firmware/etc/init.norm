@@ -1,0 +1,61 @@
+# /etc/init.norm: system-wide  file for the Bourne shells
+
+
+
+
+#judge the existence of udhcpd.lease
+echo
+firsttime=`echo /var/udhcpd/udhcpd.lease*`
+if [ "$firsttime" = "/var/udhcpd/udhcpd.lease*" ]; then
+ echo "Loading drivers and kernel modules... "
+ echo
+# no-op
+# create directory in /var mounted for TMPFS
+ mkdir -p /var/log /var/run /var/state/dhcp /var/ppp /var/udhcpd /var/zebra /var/siproxd /var/cache /var/iproute2 /var/ct/tmp
+ mkdir /var/tmp -m 777
+mount -t jffs2  /dev/mtdblock10 /userconfig/
+
+mount_jffs
+ 
+ echo > /var/udhcpd/udhcpd.leases
+ ifconfig lo 127.0.0.1 netmask 255.0.0.0 broadcast 127.255.255.255 up
+
+# if [ ! -d /tcpdump/ram_log ]
+# then
+#     mkdir /tcpdump/ram_log 
+# else
+#     rm -rf /tcpdump/ram_log/* 
+# fi 
+
+#模块之间有相互依赖关系，注意加载顺序
+test -e /lib/modules/module_sel.ko && insmod /lib/modules/module_sel.ko
+test -e /lib/modules/tcledctrl.ko && insmod /lib/modules/tcledctrl.ko;
+test -e /lib/modules/tccicmd.ko && insmod /lib/modules/tccicmd.ko;
+test -e /lib/modules/fe_core.ko && insmod /lib/modules/fe_core.ko;
+test -e /lib/modules/qdma_lan.ko && insmod /lib/modules/qdma_lan.ko
+test -e /lib/modules/eth.ko && insmod /lib/modules/eth.ko
+test -e /lib/modules/eth_ephy.ko && insmod /lib/modules/eth_ephy.ko
+test -e /lib/modules/qdma_wan.ko && insmod /lib/modules/qdma_wan.ko
+test -e /lib/modules/dying_gasp.ko && insmod /lib/modules/dying_gasp.ko
+############################echo 8 >/proc/irq/22/smp_affinity
+fi
+
+#临时修改
+#ifconfig rasw up;
+
+#ifconfig eth0 promisc
+
+#################################
+# 设置主机名称，不启动telnetd   #
+#################################
+hostname "H168AV2.1"
+#telnetd&s
+
+echo 8 > /proc/irq/22/smp_affinity
+
+
+# auto start cspd
+pc&
+
+
+

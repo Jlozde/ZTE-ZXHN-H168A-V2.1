@@ -1,0 +1,27 @@
+<DB Attr="Inc">
+<Tbl name="DevAuthInfo" RowCount="7" Attr="replase">
+<Row No="0">
+<DM name="Enable" val="0"/>
+</Row>
+<Row No="1">
+</Row>
+<Row No="2">
+<DM name="Enable" val="0"/>
+</Row>
+<Row No="3">
+</Row>
+<Row No="4">
+</Row>
+<Row No="5">
+</Row>
+<Row No="6">
+</Row>
+</Tbl>
+<Tbl name="FTPUser" RowCount="2" Attr="replase">
+<Row No="0">
+<DM name="Enable" val="0"/>
+</Row>
+<Row No="1">
+</Row>
+</Tbl>
+</DB>

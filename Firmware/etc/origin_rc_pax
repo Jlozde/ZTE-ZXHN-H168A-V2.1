@@ -1,0 +1,26 @@
+#! /bin/sh
+
+PATH=/sbin:/bin:/usr/bin
+KERNELVER=2.6.8.1
+export PATH
+export KERNELVER
+
+
+mount -t proc proc /proc
+mount -t tmpfs -o size=8192k tmpfs /var
+/bin/mount -a
+
+
+LOADTYPE=$(cat /proc/csp/loadtype)
+if [ "$LOADTYPE" = "3" ];then
+echo "init normal mode!!!"
+/etc/init.norm
+elif [ "$LOADTYPE" = "2" ];then
+echo "init debug mode!!!"
+/etc/init.debug
+else
+echo "loadtype para is error!!!"
+exit 0
+fi
+
+#/sbin/inetd

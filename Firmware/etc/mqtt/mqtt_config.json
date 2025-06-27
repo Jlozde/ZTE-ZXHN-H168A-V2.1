@@ -1,0 +1,20 @@
+{
+    "Device": {
+        "Auth": {
+            "workmode": 0
+        },
+        "WifiNetWorkCfg": {
+          "workmode": 0
+        },
+        "WAN": {
+          "Enable": {
+             "workmode": 0
+          }
+        }
+    },
+    "Method": {
+      "UpdateVersion": {
+        "workmode": 0
+        }
+    }
+}

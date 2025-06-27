@@ -1,0 +1,119 @@
+# /etc/init.debug:debug mode system-wide  for the Bourne shells
+
+
+
+
+#################################
+# 创建临时内存文件系统       #
+#################################
+ 
+# create directory in /var mounted for TMPFS
+ mkdir -p /var/log /var/run /var/state/dhcp /var/ppp /var/udhcpd /var/zebra /var/siproxd /var/cache /var/iproute2 /var/ct/tmp /var/tmp
+ 
+ 
+#################################
+# 加载eth、dsl、usb驱动   #
+#################################
+
+ test -e /lib/modules/$KERNELVER/extra/bcm_log.ko && insmod /lib/modules/$KERNELVER/extra/bcm_log.ko
+ test -e /lib/modules/$KERNELVER/extra/bcm_ingqos.ko && insmod /lib/modules/$KERNELVER/extra/bcm_ingqos.ko
+ test -e /lib/modules/$KERNELVER/extra/bcm_bpm.ko && insmod /lib/modules/$KERNELVER/extra/bcm_bpm.ko
+ test -e /lib/modules/$KERNELVER/extra/pktflow.ko && insmod /lib/modules/$KERNELVER/extra/pktflow.ko
+ test -e /lib/modules/$KERNELVER/extra/pktcmf.ko && insmod /lib/modules/$KERNELVER/extra/pktcmf.ko
+ test -e /lib/modules/$KERNELVER/extra/bcmfap.ko && insmod /lib/modules/$KERNELVER/extra/bcmfap.ko
+ test -e /etc/cmf/cmfcfg && /etc/cmf/cmfcfg
+ test -e /lib/modules/$KERNELVER/extra/profdrvdd.ko && insmod /lib/modules/$KERNELVER/extra/profdrvdd.ko
+ test -e /lib/modules/$KERNELVER/extra/bcmxtmcfg.ko && insmod /lib/modules/$KERNELVER/extra/bcmxtmcfg.ko
+ test -e /lib/modules/$KERNELVER/extra/atmapi.ko && insmod /lib/modules/$KERNELVER/extra/atmapi.ko
+ test -e /lib/modules/$KERNELVER/extra/adsldd.ko && insmod /lib/modules/$KERNELVER/extra/adsldd.ko
+ test -e /lib/modules/$KERNELVER/extra/blaa_dd.ko && insmod /lib/modules/$KERNELVER/extra/blaa_dd.ko
+ test -e /lib/modules/$KERNELVER/extra/bcmprocfs.ko && insmod /lib/modules/$KERNELVER/extra/bcmprocfs.ko
+# test -e /lib/modules/$KERNELVER/kernel/net/ipv6/ipv6.ko && insmod /lib/modules/$KERNELVER/kernel/net/ipv6/ipv6.ko
+ test -e /lib/modules/$KERNELVER/kernel/net/atm/br2684.ko && insmod /lib/modules/$KERNELVER/kernel/net/atm/br2684.ko
+ test -e /lib/modules/$KERNELVER/extra/linux-kernel-bde.ko && insmod /lib/modules/$KERNELVER/extra/linux-kernel-bde.ko
+ test -e /lib/modules/$KERNELVER/extra/linux-user-bde.ko && insmod /lib/modules/$KERNELVER/extra/linux-user-bde.ko
+ # enet depends on moca depends on i2c
+ test -e /lib/modules/$KERNELVER/extra/i2c_bcm6xxx.ko && insmod /lib/modules/$KERNELVER/extra/i2c_bcm6xxx.ko
+ test -e /lib/modules/$KERNELVER/extra/bcm3450.ko && insmod /lib/modules/$KERNELVER/extra/bcm3450.ko
+ test -e /lib/modules/$KERNELVER/extra/gpon_i2c.ko && insmod /lib/modules/$KERNELVER/extra/gpon_i2c.ko
+ test -e /lib/modules/$KERNELVER/extra/bcmmoca.ko && insmod /lib/modules/$KERNELVER/extra/bcmmoca.ko
+ test -e /lib/modules/$KERNELVER/extra/bcm_enet.ko && insmod /lib/modules/$KERNELVER/extra/bcm_enet.ko
+ test -e /lib/modules/component/drivers/switch/rtl8367/switch_rtl8367b.ko && insmod /lib/modules/component/drivers/switch/rtl8367/switch_rtl8367b.ko 
+ test -e /lib/modules/$KERNELVER/extra/bcmsw.ko && insmod /lib/modules/$KERNELVER/extra/bcmsw.ko && ifconfig bcmsw up
+ test -e /lib/modules/$KERNELVER/extra/bcm_usb.ko && insmod /lib/modules/$KERNELVER/extra/bcm_usb.ko
+ test -e /lib/modules/$KERNELVER/extra/bcmarl.ko && insmod /lib/modules/$KERNELVER/extra/bcmarl.ko
+
+#WLAN Module
+#test -e /lib/modules/$KERNELVER/extra/wl.ko && insmod /lib/modules/$KERNELVER/extra/wl.ko
+ test -e /etc/wlan/rtecdc.trx && mount -t usbfs none /proc/bus/usb && /bin/bcmdl /etc/wlan/rtecdc.trx && sleep 2 && insmod /lib/modules/$KERNELVER/extra/wl-usb.ko
+
+ test -e /lib/modules/$KERNELVER/extra/dect.ko && insmod /lib/modules/$KERNELVER/extra/dect.ko 
+ test -e /lib/modules/$KERNELVER/extra/dectshim.ko && insmod /lib/modules/$KERNELVER/extra/dectshim.ko 
+ test -e /lib/modules/$KERNELVER/extra/dspdd.ko && insmod /lib/modules/$KERNELVER/extra/dspdd.ko
+ test -e /lib/modules/$KERNELVER/extra/endpointdd.ko && insmod /lib/modules/$KERNELVER/extra/endpointdd.ko
+
+ test -e /lib/modules/$KERNELVER/kernel/drivers/slc/usr_line.ko && insmod /lib/modules/$KERNELVER/kernel/drivers/slc/usr_line.ko
+ test -e /lib/modules/$KERNELVER/kernel/drivers/slc/si3217x/si3217x_h201n.ko && insmod /lib/modules/$KERNELVER/kernel/drivers/slc/si3217x/si3217x_h201n.ko
+
+ test -e /lib/modules/$KERNELVER/extra/p8021ag.ko && insmod /lib/modules/$KERNELVER/extra/p8021ag.ko
+
+# other modules
+ test -e /lib/modules/$KERNELVER/extra/isdn.ko && insmod /lib/modules/$KERNELVER/extra/isdn.ko
+ test -e /lib/modules/$KERNELVER/kernel/drivers/isdn/capi/capi.ko && insmod /lib/modules/$KERNELVER/kernel/drivers/isdn/capi/capi.ko 
+ test -e /lib/modules/$KERNELVER/extra/bcmgpon.ko && insmod /lib/modules/$KERNELVER/extra/bcmgpon.ko
+ test -e /lib/modules/$KERNELVER/extra/bcmvlan.ko && insmod /lib/modules/$KERNELVER/extra/bcmvlan.ko
+ test -e /lib/modules/$KERNELVER/extra/pwrmngtd.ko && insmod /lib/modules/$KERNELVER/extra/pwrmngtd.ko
+ test -e /lib/modules/$KERNELVER/kernel/drivers/char/hw_random/rng-core.ko && insmod /lib/modules/$KERNELVER/kernel/drivers/char/hw_random/rng-core.ko
+ test -e /lib/modules/$KERNELVER/extra/bcmtrng.ko && insmod /lib/modules/$KERNELVER/extra/bcmtrng.ko
+
+
+#################################
+#3。配置eth和dsl                     #
+#################################
+
+echo w 2000 1140 >/proc/rtl_reg 
+usleep 1000
+echo w 2020 1140 >/proc/rtl_reg 
+usleep 1000
+echo w 2040 1140 >/proc/rtl_reg 
+usleep 1000
+echo w 2060 1140 >/proc/rtl_reg 
+usleep 1000
+
+#br2684ctl -b -c 0 -e 0 -q cbr,aal5:max_pcr=1000,pcr=1000,min_pcr=0,cdvt=1000,mbs=1000 -a 8.83
+#ifconfig nas0 devcommon 512
+#ifconfig nas0 up
+ifconfig eth0 up 
+ifconfig eth1 up
+ifconfig eth2 up 
+ifconfig eth3 up
+ifconfig eth4 up 
+ifconfig eth5 up 
+#usleep 10000
+#wbctl addif nas0 nbif0 0 00:00:00:00:00:00
+#ifconfig nbif0 up 
+usleep 10000
+brctl addbr br0
+usleep 10000
+brctl addif br0 eth0
+brctl addif br0 eth1
+#brctl addif br0 nbif0
+brctl addif br0 eth2
+brctl addif br0 eth3
+brctl addif br0 eth4
+usleep 10000
+ifconfig br0 192.168.1.1 
+ifconfig br0 promisc
+ifconfig br0 hw ether 00:d0:d0:11:21:32
+ifconfig br0 up
+brctl show
+#################################
+# 设置主机名称，不启动telnetd #
+#################################
+hostname "H168NV31"
+#telnetd&
+vsftpd -s &
+/etc/Wireless/CL1800/host_insmod.sh eth5
+usleep 10000
+/etc/Wireless/CL1800/ce_prod.sh
+#voip&
