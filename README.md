@@ -4,7 +4,7 @@ Bu rehber, ZTE ZXHN H168A V2.1 model modemlerde "root" kullanıcı hesabını na
 
 > **⚠️ Sorumluluk Reddi**
 >
-> Bu rehber, yalnızca kendi sorumluluğunuzdaki modemlerde root hesabını etkinleştirmek için hazırlanmıştır. Yapılan işlemler hakkında yeterli bilgiye sahip değilseniz, donanımınıza veya kendinize zarar verme riski bulunmaktadır. Lütfen ne yaptığınızı bilerek ilerleyin veya bu işlemlerden kaçının.
+> Bu rehber, yalnızca kendi sorumluluğunuzdaki modemlerde root hesabını etkinleştirmek için hazırlanmıştır. Yapılan işlemler hakkında yeterli bilgiye sahip değilseniz, donanımınıza veya kendinize zarar verme riski bulunmaktadır. Sahipliğinin internet servis sağlayıcınıza ait oldığu modemlerde uygulanması yasal olmayabilir. Lütfen ne yaptığınızı bilerek ilerleyin veya bu işlemlerden kaçının.
 
 ### Genel Bakış
 
