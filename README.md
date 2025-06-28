@@ -14,8 +14,10 @@ Ancak, LeMandark'ın H298A-V9 için hazırladığı script'teki parametreler, ne
 
 Örneğin, H298A modelinde kullanılan bir parametre H168A V2.1'de farklı bir isme sahip olabiliyor:
 
-  * `InternetGatewayDevice.X_TT.Configuration.Shell.Enable` yerine bu modelde `InternetGatewayDevice.X_TTNET.Configuration.Shell.Enable` kullanılmış.
-  * `InternetGatewayDevice.X_TT.Users.User.2.Enable` yerine ise `InternetGatewayDevice.X_TTNET.Users.User.2.Enable` kullanılmış.
+| H298A | H168A V2.1 |
+| --- | --- |
+| InternetGatewayDevice.X_TT.Configuration.Shell.Enable | InternetGatewayDevice.X_TTNET.Configuration.Shell.Enable |
+| InternetGatewayDevice.X_TT.Users.User.2.Enable | InternetGatewayDevice.X_TTNET.Users.User.2.Enable |
 
 Buradaki `X_TT`, `X_ZTE`, `X_TURKTELEKOM` veya `X_TTNET` gibi ön ekler, modemin yazılımına ve dağıtan servis sağlayıcıya göre değişiklik gösterebilir.
 
